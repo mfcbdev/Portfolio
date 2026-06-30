@@ -1,0 +1,11 @@
+---
+import Base from '../../layouts/Base.astro';
+import ExperienceList from '../../sections/ExperienceList.astro';
+import { useTranslations } from '../../i18n/utils';
+
+const t = useTranslations('es');
+---
+
+<Base title={t('meta.experience.title')} description={t('meta.experience.description')}>
+  <ExperienceList locale="es" />
+</Base>

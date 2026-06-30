@@ -1,6 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
-import ProjectCard from '../components/ProjectCard.astro';
+import ExperienceCard from '../components/ExperienceCard.astro';
 import SectionHeading from '../components/SectionHeading.astro';
 import { useTranslations } from '../i18n/utils';
 import type { Locale } from '../i18n/ui';
@@ -12,22 +12,23 @@ interface Props {
 const { locale } = Astro.props;
 const t = useTranslations(locale);
 
-const all = await getCollection('projects', ({ data }) => data.locale === locale);
+const all = await getCollection('experience', ({ data }) => data.locale === locale);
 all.sort((a, b) => a.data.order - b.data.order);
 ---
 
 <section class="mx-auto max-w-3xl px-6 pt-16 sm:pt-24">
-  <SectionHeading title={t('projects.title')} intro={t('projects.intro')} />
+  <SectionHeading title={t('experience.title')} intro={t('experience.intro')} />
   <div>
     {
       all.map((entry) => (
-        <ProjectCard
+        <ExperienceCard
           locale={locale}
+          slug={entry.data.slug}
           title={entry.data.title}
+          role={entry.data.role}
+          period={entry.data.period}
           summary={entry.data.summary}
           stack={entry.data.stack}
-          github={entry.data.github}
-          liveUrl={entry.data.liveUrl}
         />
       ))
     }

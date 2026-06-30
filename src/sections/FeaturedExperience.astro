@@ -1,6 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
-import ProjectCard from '../components/ProjectCard.astro';
+import ExperienceCard from '../components/ExperienceCard.astro';
 import { useTranslations, path } from '../i18n/utils';
 import type { Locale } from '../i18n/ui';
 
@@ -11,25 +11,26 @@ interface Props {
 const { locale } = Astro.props;
 const t = useTranslations(locale);
 
-const all = await getCollection('projects', ({ data }) => data.locale === locale && data.featured);
+const all = await getCollection('experience', ({ data }) => data.locale === locale && data.featured);
 all.sort((a, b) => a.data.order - b.data.order);
 ---
 
-<section class="mx-auto max-w-3xl px-6 pb-24">
+<section class="mx-auto max-w-3xl px-6 pb-20">
   <div class="flex items-baseline justify-between mb-8">
-    <h2 class="text-[var(--text-h2)] font-serif font-bold tracking-tight">{t('home.featuredProjects')}</h2>
-    <a href={path('projects', locale)} class="text-sm">{t('home.viewAllProjects')}</a>
+    <h2 class="text-[var(--text-h2)] font-serif font-bold tracking-tight">{t('home.featuredExperience')}</h2>
+    <a href={path('experience', locale)} class="text-sm">{t('home.viewAllExperience')}</a>
   </div>
   <div>
     {
       all.map((entry) => (
-        <ProjectCard
+        <ExperienceCard
           locale={locale}
+          slug={entry.data.slug}
           title={entry.data.title}
+          role={entry.data.role}
+          period={entry.data.period}
           summary={entry.data.summary}
           stack={entry.data.stack}
-          github={entry.data.github}
-          liveUrl={entry.data.liveUrl}
         />
       ))
     }

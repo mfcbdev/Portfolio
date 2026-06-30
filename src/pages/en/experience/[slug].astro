@@ -1,10 +1,10 @@
 ---
 import { getCollection, render } from 'astro:content';
-import Base from '../../layouts/Base.astro';
-import { path } from '../../i18n/utils';
+import Base from '../../../layouts/Base.astro';
+import { path } from '../../../i18n/utils';
 
 export async function getStaticPaths() {
-  const all = await getCollection('projects', ({ data }) => data.locale === 'es');
+  const all = await getCollection('experience', ({ data }) => data.locale === 'en');
   return all.map((entry) => ({
     params: { slug: entry.data.slug },
     props: { entry },
@@ -18,7 +18,7 @@ const d = entry.data;
 
 <Base title={`${d.title} — Matías Cavieres`} description={d.summary}>
   <article class="mx-auto max-w-3xl px-6 pt-16 sm:pt-24">
-    <a href={path('projects', 'es')} class="text-sm text-[var(--color-muted)]">« Volver a proyectos</a>
+    <a href={path('experience', 'en')} class="text-sm text-[var(--color-muted)]">« Back to experience</a>
     <header class="mt-6 mb-10 border-b border-[var(--color-rule)] pb-10">
       <p class="text-sm text-[var(--color-muted)] uppercase tracking-[0.18em] mb-3">{d.period}</p>
       <h1 class="text-[var(--text-h1)] font-serif font-bold tracking-tight">{d.title}</h1>

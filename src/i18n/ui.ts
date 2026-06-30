@@ -8,6 +8,7 @@ export const ui = {
     'site.description':
       'Portafolio de Matías Cavieres. Ingeniero en Informática especializado en desarrollo web con React, TypeScript y soluciones en la nube.',
     'nav.home': 'Inicio',
+    'nav.experience': 'Experiencia',
     'nav.projects': 'Proyectos',
     'nav.about': 'Sobre mí',
     'nav.contact': 'Contacto',
@@ -17,14 +18,22 @@ export const ui = {
     'home.role': 'Ingeniero en Informática',
     'home.tagline':
       'Diseño y construyo soluciones web que entregan resultados medibles — desde sistemas de inventario en tiempo real hasta dashboards que mueven decisiones.',
+    'home.cta.experience': 'Ver experiencia',
     'home.cta.projects': 'Ver proyectos',
     'home.cta.contact': 'Hablemos',
-    'home.featured': 'Proyectos destacados',
-    'home.viewAll': 'Ver todos los proyectos »',
+    'home.featuredExperience': 'Experiencia destacada',
+    'home.featuredProjects': 'Proyectos destacados',
+    'home.viewAllExperience': 'Ver toda la experiencia »',
+    'home.viewAllProjects': 'Ver todos los proyectos »',
+    'experience.title': 'Experiencia',
+    'experience.intro':
+      'Roles profesionales recientes y el impacto que generé en cada uno.',
+    'experience.viewCase': 'Leer caso de estudio »',
     'projects.title': 'Proyectos',
     'projects.intro':
-      'Una selección de trabajo profesional y experimentos personales. Para detalle completo, descarga mi CV o escríbeme.',
-    'projects.viewCase': 'Leer caso de estudio »',
+      'Selección de proyectos personales y de cliente publicados en GitHub. Código abierto cuando es posible.',
+    'projects.code': 'Código',
+    'projects.live': 'Demo',
     'about.title': 'Sobre mí',
     'about.bioHeading': 'Resumen',
     'about.educationHeading': 'Educación',
@@ -41,9 +50,12 @@ export const ui = {
     'cta.downloadCV': 'Descargar CV',
     'footer.built': 'Hecho con Astro. Hospedado en Vercel.',
     'footer.copyright': '© 2026 Matías Cavieres.',
+    'meta.experience.title': 'Experiencia — Matías Cavieres',
+    'meta.experience.description':
+      'Experiencia profesional de Matías Cavieres: Hotel Bidasoa, Banco BICE y más.',
     'meta.projects.title': 'Proyectos — Matías Cavieres',
     'meta.projects.description':
-      'Casos de estudio de Matías Cavieres: Hotel Bidasoa, Banco BICE y más.',
+      'Proyectos de código de Matías Cavieres en GitHub: Hotel Bidasoa, Habit Tracker y más.',
     'meta.about.title': 'Sobre mí — Matías Cavieres',
     'meta.about.description':
       'Biografía, educación y habilidades de Matías Cavieres, Ingeniero en Informática.',
@@ -56,6 +68,7 @@ export const ui = {
     'site.description':
       "Portfolio of Matías Cavieres. Software Engineer building web products with React, TypeScript and cloud services.",
     'nav.home': 'Home',
+    'nav.experience': 'Experience',
     'nav.projects': 'Projects',
     'nav.about': 'About',
     'nav.contact': 'Contact',
@@ -65,14 +78,22 @@ export const ui = {
     'home.role': 'Software Engineer',
     'home.tagline':
       'I design and build web solutions that ship measurable outcomes — from real-time inventory systems to dashboards that move decisions.',
+    'home.cta.experience': 'See experience',
     'home.cta.projects': 'See projects',
     'home.cta.contact': "Let's talk",
-    'home.featured': 'Featured work',
-    'home.viewAll': 'See all projects »',
+    'home.featuredExperience': 'Featured experience',
+    'home.featuredProjects': 'Featured projects',
+    'home.viewAllExperience': 'See all experience »',
+    'home.viewAllProjects': 'See all projects »',
+    'experience.title': 'Experience',
+    'experience.intro':
+      'Recent professional roles and the impact I shipped in each.',
+    'experience.viewCase': 'Read case study »',
     'projects.title': 'Projects',
     'projects.intro':
-      'A selection of professional work and personal experiments. For full detail, grab my CV or drop me a line.',
-    'projects.viewCase': 'Read case study »',
+      'A selection of personal and client projects published on GitHub. Open source where possible.',
+    'projects.code': 'Code',
+    'projects.live': 'Live demo',
     'about.title': 'About',
     'about.bioHeading': 'Summary',
     'about.educationHeading': 'Education',
@@ -89,9 +110,12 @@ export const ui = {
     'cta.downloadCV': 'Download CV',
     'footer.built': 'Built with Astro. Hosted on Vercel.',
     'footer.copyright': '© 2026 Matías Cavieres.',
+    'meta.experience.title': 'Experience — Matías Cavieres',
+    'meta.experience.description':
+      'Professional experience of Matías Cavieres: Hotel Bidasoa, Banco BICE and more.',
     'meta.projects.title': 'Projects — Matías Cavieres',
     'meta.projects.description':
-      'Case studies by Matías Cavieres: Hotel Bidasoa, Banco BICE and more.',
+      'Code projects by Matías Cavieres on GitHub: Hotel Bidasoa, Habit Tracker and more.',
     'meta.about.title': 'About — Matías Cavieres',
     'meta.about.description':
       'Biography, education and skills of Matías Cavieres, Software Engineer.',

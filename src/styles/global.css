@@ -3,14 +3,14 @@
 @import "@fontsource-variable/inter";
 
 @theme {
-  --color-bg: #f7f1ea;
-  --color-bg-alt: #efe7dc;
-  --color-ink: #1a1a1a;
-  --color-muted: #6b6660;
-  --color-surface: #1e1c1a;
-  --color-on-surface: #f5ede4;
-  --color-accent: #a87b4a;
-  --color-rule: #d9cfc1;
+  --color-bg: #eff6e0;
+  --color-bg-alt: #e3edd0;
+  --color-ink: #01161e;
+  --color-muted: #598392;
+  --color-surface: #01161e;
+  --color-on-surface: #eff6e0;
+  --color-accent: #124559;
+  --color-rule: #aec3b0;
 
   --font-serif: "Fraunces Variable", ui-serif, Georgia, serif;
   --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
@@ -96,7 +96,7 @@
   }
 
   .btn:hover {
-    background: #2a2724;
+    background: var(--color-accent);
     transform: translateY(-1px);
   }
 

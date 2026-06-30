@@ -14,6 +14,7 @@ export function useTranslations(locale: Locale) {
 
 const routeMap = {
   home: { es: '/', en: '/en/' },
+  experience: { es: '/experiencia', en: '/en/experience' },
   projects: { es: '/proyectos', en: '/en/projects' },
   about: { es: '/sobre-mi', en: '/en/about' },
   contact: { es: '/contacto', en: '/en/contact' },
@@ -25,29 +26,35 @@ export function path(route: RouteKey, locale: Locale): string {
   return routeMap[route][locale];
 }
 
-export function projectPath(slug: string, locale: Locale): string {
-  return locale === 'en' ? `/en/projects/${slug}` : `/proyectos/${slug}`;
+export function experiencePath(slug: string, locale: Locale): string {
+  return locale === 'en' ? `/en/experience/${slug}` : `/experiencia/${slug}`;
 }
+
+const firstSegmentToRoute: Record<string, RouteKey> = {
+  '': 'home',
+  experiencia: 'experience',
+  experience: 'experience',
+  proyectos: 'projects',
+  projects: 'projects',
+  'sobre-mi': 'about',
+  about: 'about',
+  contacto: 'contact',
+  contact: 'contact',
+};
 
 export function alternateUrl(url: URL, locale: Locale): string {
   const segments = url.pathname.split('/').filter(Boolean);
   const isEn = segments[0] === 'en';
   const stripped = isEn ? segments.slice(1) : segments;
-  const first = stripped[0];
+  const first = stripped[0] ?? '';
   const rest = stripped.slice(1).join('/');
 
-  let key: RouteKey | null = null;
-  if (!first) key = 'home';
-  else if (first === 'proyectos' || first === 'projects') key = 'projects';
-  else if (first === 'sobre-mi' || first === 'about') key = 'about';
-  else if (first === 'contacto' || first === 'contact') key = 'contact';
-
-  if (key) {
-    const base = path(key, locale);
-    if (key === 'projects' && rest) return `${base}/${rest}`;
-    return base;
+  const key = firstSegmentToRoute[first] ?? 'home';
+  const base = path(key, locale);
+  if ((key === 'experience' || key === 'projects') && rest) {
+    return `${base}/${rest}`;
   }
-  return locale === 'en' ? '/en/' : '/';
+  return base;
 }
 
 export const locales: Locale[] = ['es', 'en'];
