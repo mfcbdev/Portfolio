@@ -1,0 +1,11 @@
+---
+import Base from '../../../layouts/Base.astro';
+import ProjectsList from '../../../sections/ProjectsList.astro';
+import { useTranslations } from '../../../i18n/utils';
+
+const t = useTranslations('en');
+---
+
+<Base title={t('meta.projects.title')} description={t('meta.projects.description')}>
+  <ProjectsList locale="en" />
+</Base>

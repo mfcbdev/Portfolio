@@ -1,0 +1,117 @@
+---
+import SectionHeading from '../components/SectionHeading.astro';
+import { useTranslations } from '../i18n/utils';
+import type { Locale } from '../i18n/ui';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+
+const bio = {
+  es: `Titulado en Ingeniería en Informática con experiencia en desarrollo de soluciones web con React, TypeScript y Python. Construyo productos que entregan resultados medibles: un sistema de inventario en tiempo real para Hotel Bidasoa que alcanzó 95% de trazabilidad en pedidos de bodega y reportes de salud ágil en Banco BICE que apoyaron la toma de decisiones del equipo de Agilidad TI. Disfruto traducir requerimientos en arquitecturas simples, automatizar lo aburrido y dejar todo bien documentado.`,
+  en: `Computer Engineer with experience building web solutions in React, TypeScript and Python. I ship products that deliver measurable outcomes — a real-time inventory system for Hotel Bidasoa that hit 95% traceability on warehouse orders, and agile-health reports at Banco BICE that fed the IT Agility team's decisions. I enjoy translating requirements into simple architectures, automating the boring parts and leaving everything well documented.`,
+}[locale];
+
+const education = [
+  {
+    school: 'Centro de Formación Técnica Inacap',
+    items: [
+      { es: 'Titulado, Ingeniería en Informática — 2025', en: 'Degree, Computer Engineering — 2025' },
+      { es: 'Titulado, Analista Programador — 2022', en: 'Degree, Programmer Analyst — 2022' },
+    ],
+  },
+];
+
+const certs = [
+  {
+    es: 'Herramientas para Diseño y Consulta de Bases de Datos con SQL — Pontificia Universidad Católica de Chile · Nov 2024',
+    en: 'Database Design & Query Tools with SQL — Pontificia Universidad Católica de Chile · Nov 2024',
+  },
+  {
+    es: 'ONE | Inmersión Agentes de IA — Alura LATAM / Oracle Next Education · May 2026',
+    en: 'ONE | AI Agents Immersion — Alura LATAM / Oracle Next Education · May 2026',
+  },
+];
+
+const languages = [
+  { es: 'Español — Nativo', en: 'Spanish — Native' },
+  { es: 'Inglés — B2 MCER, Intermedio Avanzado', en: 'English — B2 CEFR, Upper Intermediate' },
+];
+
+const skills = [
+  {
+    title: { es: 'Lenguajes', en: 'Languages' },
+    items: ['JavaScript', 'TypeScript', 'Python', 'R', 'C#'],
+  },
+  {
+    title: { es: 'Desarrollo Web', en: 'Web Development' },
+    items: ['React', 'Django', 'HTML', 'CSS', 'Bootstrap', '.NET'],
+  },
+  {
+    title: { es: 'Bases de Datos', en: 'Databases' },
+    items: ['SQL', 'PostgreSQL (Supabase)', 'MongoDB', 'WIQL'],
+  },
+  {
+    title: { es: 'Nube', en: 'Cloud' },
+    items: ['GCP (BigQuery)', 'AWS S3', 'AWS RDS', 'AWS EC2', 'AWS Lambda'],
+  },
+  {
+    title: { es: 'IA', en: 'AI' },
+    items: ['Claude', 'Claude Code', 'Cohere', 'n8n'],
+  },
+  {
+    title: { es: 'Herramientas', en: 'Tooling' },
+    items: ['Git', 'MySQL Workbench', 'Power BI', 'Notion', 'Jira', 'Confluence', 'Azure DevOps', 'Looker Studio', 'Google Apps Script', 'Postman'],
+  },
+];
+---
+
+<section class="mx-auto max-w-3xl px-6 pt-16 sm:pt-24">
+  <SectionHeading title={t('about.title')} />
+
+  <div class="prose-body">
+    <h2>{t('about.bioHeading')}</h2>
+    <p>{bio}</p>
+
+    <h2>{t('about.educationHeading')}</h2>
+    {
+      education.map((e) => (
+        <div>
+          <h3>{e.school}</h3>
+          <ul>
+            {e.items.map((i) => <li>{i[locale]}</li>)}
+          </ul>
+        </div>
+      ))
+    }
+
+    <h2>{t('about.certsHeading')}</h2>
+    <ul>
+      {certs.map((c) => <li>{c[locale]}</li>)}
+    </ul>
+
+    <h2>{t('about.languagesHeading')}</h2>
+    <ul>
+      {languages.map((l) => <li>{l[locale]}</li>)}
+    </ul>
+
+    <h2>{t('about.skillsHeading')}</h2>
+    {
+      skills.map((group) => (
+        <div class="mt-5">
+          <h3>{group.title[locale]}</h3>
+          <div class="flex flex-wrap gap-1.5 mt-2">
+            {group.items.map((item) => <span class="chip">{item}</span>)}
+          </div>
+        </div>
+      ))
+    }
+  </div>
+
+  <div class="mt-12">
+    <a href="/cv/CV_Matias_Cavieres_ES.pdf" class="btn" download>{t('cta.downloadCV')}</a>
+  </div>
+</section>

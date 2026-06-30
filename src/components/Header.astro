@@ -1,0 +1,76 @@
+---
+import { useTranslations, path, alternateUrl } from '../i18n/utils';
+import type { Locale } from '../i18n/ui';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+const otherLocale: Locale = locale === 'es' ? 'en' : 'es';
+const altPath = alternateUrl(Astro.url, otherLocale);
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+
+const links = [
+  { href: path('home', locale), label: t('nav.home') },
+  { href: path('projects', locale), label: t('nav.projects') },
+  { href: path('about', locale), label: t('nav.about') },
+  { href: path('contact', locale), label: t('nav.contact') },
+];
+
+function isActive(href: string): boolean {
+  const normalized = href.replace(/\/$/, '') || '/';
+  if (normalized === '/' || normalized === '/en') {
+    return currentPath === '/' || currentPath === '/en';
+  }
+  return currentPath === normalized || currentPath.startsWith(normalized + '/');
+}
+---
+
+<header class="w-full">
+  <div class="mx-auto max-w-5xl px-6 py-6 flex items-center justify-between gap-4">
+    <a href={path('home', locale)} class="flex items-center gap-2 no-underline" aria-label="Matías Cavieres">
+      <svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true">
+        <rect x="1" y="1" width="9" height="9" rx="1.5" fill="#1e1c1a" />
+        <rect x="12" y="1" width="9" height="9" rx="1.5" fill="#a87b4a" />
+        <rect x="1" y="12" width="9" height="9" rx="1.5" fill="#a87b4a" />
+        <rect x="12" y="12" width="9" height="9" rx="1.5" fill="#1e1c1a" />
+      </svg>
+      <span class="font-serif font-bold tracking-tight text-[1.05rem]">mc.</span>
+    </a>
+    <nav class="flex items-center gap-5 sm:gap-7">
+      {
+        links.map((link) => (
+          <a
+            href={link.href}
+            class="nav-link hidden sm:inline"
+            aria-current={isActive(link.href) ? 'page' : undefined}
+          >
+            {link.label}
+          </a>
+        ))
+      }
+      <a
+        href={altPath}
+        class="nav-link border border-[var(--color-rule)] rounded-full px-2.5 py-1 text-xs uppercase tracking-wider"
+        aria-label={t('lang.toggleAria')}
+      >
+        {t('lang.toggle')}
+      </a>
+    </nav>
+  </div>
+  <nav class="sm:hidden mx-auto max-w-5xl px-6 pb-4 flex items-center gap-5">
+    {
+      links.map((link) => (
+        <a
+          href={link.href}
+          class="nav-link text-sm"
+          aria-current={isActive(link.href) ? 'page' : undefined}
+        >
+          {link.label}
+        </a>
+      ))
+    }
+  </nav>
+</header>

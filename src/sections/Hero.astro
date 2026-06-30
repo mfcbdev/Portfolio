@@ -1,0 +1,32 @@
+---
+import { useTranslations, path } from '../i18n/utils';
+import type { Locale } from '../i18n/ui';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+---
+
+<section class="mx-auto max-w-5xl px-6 pt-16 pb-24 sm:pt-24 sm:pb-32">
+  <p class="text-[var(--color-muted)] text-lg mb-3">{t('home.greeting')}</p>
+  <h1 class="text-[var(--text-display)] font-serif font-bold tracking-[-0.025em] leading-[1.02]">
+    {t('home.role')}
+  </h1>
+  <p class="mt-8 text-[var(--text-lead)] text-[var(--color-muted)] max-w-2xl leading-relaxed">
+    {t('home.tagline')}
+  </p>
+  <div class="mt-10 flex flex-wrap gap-3">
+    <a href={path('projects', locale)} class="btn">{t('home.cta.projects')}</a>
+    <a href={path('contact', locale)} class="btn btn-ghost">{t('home.cta.contact')}</a>
+    <a
+      href={`/cv/CV_Matias_Cavieres_${locale === 'en' ? 'ES' : 'ES'}.pdf`}
+      class="btn btn-ghost"
+      download
+    >
+      {t('cta.downloadCV')}
+    </a>
+  </div>
+</section>
