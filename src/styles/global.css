@@ -233,13 +233,8 @@
 
   .btn:hover {
     background: var(--color-accent);
-    color: var(--color-on-surface);
     transform: translateY(-1px);
     box-shadow: 0 6px 16px -6px rgba(1, 22, 30, 0.25);
-  }
-
-  :root[data-theme="dark"] .btn:hover {
-    color: var(--color-bg);
   }
 
   .btn:active {
