@@ -29,9 +29,13 @@ function isActive(href: string): boolean {
 }
 ---
 
-<header class="w-full">
+<header class="w-full" transition:persist>
   <div class="mx-auto max-w-5xl px-6 py-6 flex items-center justify-between gap-4">
-    <a href={path('home', locale)} class="flex items-center gap-2 no-underline" aria-label="Matías Cavieres">
+    <a
+      href={path('home', locale)}
+      class="flex items-center gap-2 no-underline transition-opacity duration-200 hover:opacity-80"
+      aria-label="Matías Cavieres"
+    >
       <svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true">
         <rect x="1" y="1" width="9" height="9" rx="1.5" fill="#01161e" />
         <rect x="12" y="1" width="9" height="9" rx="1.5" fill="#124559" />
@@ -54,19 +58,19 @@ function isActive(href: string): boolean {
       }
       <a
         href={altPath}
-        class="nav-link border border-[var(--color-rule)] rounded-full px-2.5 py-1 text-xs uppercase tracking-wider"
+        class="text-xs uppercase tracking-wider border border-[var(--color-rule)] rounded-full px-2.5 py-1 text-[var(--color-muted)] no-underline transition-colors duration-200 hover:border-[var(--color-accent)] hover:text-[var(--color-accent)]"
         aria-label={t('lang.toggleAria')}
       >
         {t('lang.toggle')}
       </a>
     </nav>
   </div>
-  <nav class="sm:hidden mx-auto max-w-5xl px-6 pb-4 flex items-center gap-5">
+  <nav class="sm:hidden mx-auto max-w-5xl px-6 pb-4 flex items-center gap-5 overflow-x-auto">
     {
       links.map((link) => (
         <a
           href={link.href}
-          class="nav-link text-sm"
+          class="nav-link text-sm whitespace-nowrap"
           aria-current={isActive(link.href) ? 'page' : undefined}
         >
           {link.label}

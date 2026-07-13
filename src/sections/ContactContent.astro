@@ -14,24 +14,24 @@ const t = useTranslations(locale);
 <section class="mx-auto max-w-3xl px-6 pt-16 sm:pt-24">
   <SectionHeading title={t('contact.title')} intro={t('contact.intro')} />
 
-  <dl class="grid grid-cols-1 sm:grid-cols-[10rem_1fr] gap-y-4 gap-x-6 text-[1.05rem]">
+  <dl class="reveal grid grid-cols-1 sm:grid-cols-[10rem_1fr] gap-y-4 gap-x-6 text-[1.05rem]" style="--reveal-delay: 220ms">
     <dt class="text-[var(--color-muted)] uppercase text-xs tracking-[0.18em] pt-1">{t('contact.email')}</dt>
-    <dd><a href="mailto:matcavieres@gmail.com">matcavieres@gmail.com</a></dd>
+    <dd><a href="mailto:matcavieres@gmail.com" class="link-quiet">matcavieres@gmail.com</a></dd>
 
     <dt class="text-[var(--color-muted)] uppercase text-xs tracking-[0.18em] pt-1">LinkedIn</dt>
-    <dd><a href="https://www.linkedin.com/in/matias-cavieres/" target="_blank" rel="noopener">linkedin.com/in/matias-cavieres</a></dd>
+    <dd><a href="https://www.linkedin.com/in/matias-cavieres/" target="_blank" rel="noopener" class="link-quiet">linkedin.com/in/matias-cavieres</a></dd>
 
     <dt class="text-[var(--color-muted)] uppercase text-xs tracking-[0.18em] pt-1">GitHub</dt>
-    <dd><a href="https://github.com/matcavieres" target="_blank" rel="noopener">github.com/matcavieres</a></dd>
+    <dd><a href="https://github.com/mfcbdev" target="_blank" rel="noopener" class="link-quiet">github.com/mfcbdev</a></dd>
 
     <dt class="text-[var(--color-muted)] uppercase text-xs tracking-[0.18em] pt-1">{t('contact.phone')}</dt>
-    <dd><a href="tel:+56990612181">+56 9 9061 2181</a></dd>
+    <dd><a href="tel:+56990612181" class="link-quiet">+56 9 9061 2181</a></dd>
 
     <dt class="text-[var(--color-muted)] uppercase text-xs tracking-[0.18em] pt-1">{t('contact.location')}</dt>
     <dd>{t('contact.location.value')}</dd>
   </dl>
 
-  <div class="mt-12">
+  <div class="reveal mt-12" style="--reveal-delay: 320ms">
     <a href="/cv/CV_Matias_Cavieres_ES.pdf" class="btn" download>{t('cta.downloadCV')}</a>
   </div>
 </section>

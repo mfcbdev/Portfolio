@@ -20,16 +20,18 @@ all.sort((a, b) => a.data.order - b.data.order);
   <SectionHeading title={t('experience.title')} intro={t('experience.intro')} />
   <div>
     {
-      all.map((entry) => (
-        <ExperienceCard
-          locale={locale}
-          slug={entry.data.slug}
-          title={entry.data.title}
-          role={entry.data.role}
-          period={entry.data.period}
-          summary={entry.data.summary}
-          stack={entry.data.stack}
-        />
+      all.map((entry, i) => (
+        <div class="reveal" style={`--reveal-delay: ${200 + i * 90}ms`}>
+          <ExperienceCard
+            locale={locale}
+            slug={entry.data.slug}
+            title={entry.data.title}
+            role={entry.data.role}
+            period={entry.data.period}
+            summary={entry.data.summary}
+            stack={entry.data.stack}
+          />
+        </div>
       ))
     }
   </div>

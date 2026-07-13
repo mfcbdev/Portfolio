@@ -18,10 +18,10 @@ const d = entry.data;
 
 <Base title={`${d.title} — Matías Cavieres`} description={d.summary}>
   <article class="mx-auto max-w-3xl px-6 pt-16 sm:pt-24">
-    <a href={path('experience', 'es')} class="text-sm text-[var(--color-muted)]">« Volver a experiencia</a>
-    <header class="mt-6 mb-10 border-b border-[var(--color-rule)] pb-10">
+    <a href={path('experience', 'es')} class="link-quiet text-sm text-[var(--color-muted)]">« Volver a experiencia</a>
+    <header class="reveal mt-6 mb-10 border-b border-[var(--color-rule)] pb-10" style="--reveal-delay: 60ms">
       <p class="text-sm text-[var(--color-muted)] uppercase tracking-[0.18em] mb-3">{d.period}</p>
-      <h1 class="text-[var(--text-h1)] font-serif font-bold tracking-tight">{d.title}</h1>
+      <h1 class="text-[var(--text-h1)] font-serif font-bold tracking-tight" transition:name={`exp-title-${d.slug}`}>{d.title}</h1>
       <p class="mt-3 text-[var(--text-lead)] text-[var(--color-muted)] italic">{d.role}</p>
       <div class="mt-6 flex flex-wrap gap-1.5">
         {d.stack.map((s) => <span class="chip">{s}</span>)}
@@ -38,7 +38,7 @@ const d = entry.data;
         )
       }
     </header>
-    <div class="prose-body">
+    <div class="prose-body reveal" style="--reveal-delay: 180ms">
       <Content />
     </div>
   </article>

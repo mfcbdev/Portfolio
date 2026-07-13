@@ -10,7 +10,30 @@ const { eyebrow, title, intro, center = false } = Astro.props;
 ---
 
 <header class:list={['mb-12', center && 'text-center']}>
-  {eyebrow && <p class="text-sm uppercase tracking-[0.18em] text-[var(--color-muted)] mb-3">{eyebrow}</p>}
-  <h1 class="text-[var(--text-h1)] font-serif font-bold tracking-tight">{title}</h1>
-  {intro && <p class="mt-4 text-[var(--text-lead)] text-[var(--color-muted)] max-w-2xl" class:list={[center && 'mx-auto']}>{intro}</p>}
+  {
+    eyebrow && (
+      <p class="reveal text-sm uppercase tracking-[0.18em] text-[var(--color-muted)] mb-3" style="--reveal-delay: 0ms">
+        {eyebrow}
+      </p>
+    )
+  }
+  <h1
+    class="reveal text-[var(--text-h1)] font-serif font-bold tracking-tight"
+    style="--reveal-delay: 40ms"
+  >
+    {title}
+  </h1>
+  {
+    intro && (
+      <p
+        class:list={[
+          'reveal mt-4 text-[var(--text-lead)] text-[var(--color-muted)] max-w-2xl',
+          center && 'mx-auto',
+        ]}
+        style="--reveal-delay: 120ms"
+      >
+        {intro}
+      </p>
+    )
+  }
 </header>

@@ -16,21 +16,23 @@ all.sort((a, b) => a.data.order - b.data.order);
 ---
 
 <section class="mx-auto max-w-3xl px-6 pb-24">
-  <div class="flex items-baseline justify-between mb-8">
+  <div class="flex items-baseline justify-between mb-10">
     <h2 class="text-[var(--text-h2)] font-serif font-bold tracking-tight">{t('home.featuredProjects')}</h2>
-    <a href={path('projects', locale)} class="text-sm">{t('home.viewAllProjects')}</a>
+    <a href={path('projects', locale)} class="link-quiet text-sm text-[var(--color-muted)]">{t('home.viewAllProjects')}</a>
   </div>
   <div>
     {
-      all.map((entry) => (
-        <ProjectCard
-          locale={locale}
-          title={entry.data.title}
-          summary={entry.data.summary}
-          stack={entry.data.stack}
-          github={entry.data.github}
-          liveUrl={entry.data.liveUrl}
-        />
+      all.map((entry, i) => (
+        <div class="reveal" style={`--reveal-delay: ${i * 80}ms`}>
+          <ProjectCard
+            locale={locale}
+            title={entry.data.title}
+            summary={entry.data.summary}
+            stack={entry.data.stack}
+            github={entry.data.github}
+            liveUrl={entry.data.liveUrl}
+          />
+        </div>
       ))
     }
   </div>

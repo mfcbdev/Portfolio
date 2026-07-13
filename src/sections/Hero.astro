@@ -11,14 +11,23 @@ const t = useTranslations(locale);
 ---
 
 <section class="mx-auto max-w-5xl px-6 pt-16 pb-24 sm:pt-24 sm:pb-32">
-  <p class="text-[var(--color-muted)] text-lg mb-3">{t('home.greeting')}</p>
-  <h1 class="text-[var(--text-display)] font-serif font-bold tracking-[-0.025em] leading-[1.02]">
+  <p class="reveal text-[var(--color-muted)] text-lg mb-3" style="--reveal-delay: 0ms">
+    {t('home.greeting')}
+  </p>
+  <h1
+    class="reveal text-[var(--text-display)] font-serif font-bold tracking-[-0.025em] leading-[1.02]"
+    style="--reveal-delay: 60ms"
+    transition:name="hero-title"
+  >
     {t('home.role')}
   </h1>
-  <p class="mt-8 text-[var(--text-lead)] text-[var(--color-muted)] max-w-2xl leading-relaxed">
+  <p
+    class="reveal mt-8 text-[var(--text-lead)] text-[var(--color-muted)] max-w-2xl leading-relaxed"
+    style="--reveal-delay: 140ms"
+  >
     {t('home.tagline')}
   </p>
-  <div class="mt-10 flex flex-wrap gap-3">
+  <div class="reveal mt-10 flex flex-wrap gap-3" style="--reveal-delay: 220ms">
     <a href={path('experience', locale)} class="btn">{t('home.cta.experience')}</a>
     <a href={path('projects', locale)} class="btn btn-ghost">{t('home.cta.projects')}</a>
     <a href={path('contact', locale)} class="btn btn-ghost">{t('home.cta.contact')}</a>

@@ -10,26 +10,26 @@ const { locale } = Astro.props;
 const t = useTranslations(locale);
 ---
 
-<footer class="border-t border-[var(--color-rule)] mt-24">
+<footer class="border-t border-[var(--color-rule)] mt-24" transition:persist>
   <div
     class="mx-auto max-w-5xl px-6 py-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-sm text-[var(--color-muted)]"
   >
     <p>{t('footer.copyright')}</p>
     <div class="flex flex-wrap gap-4">
-      <a href="mailto:matcavieres@gmail.com" class="nav-link">matcavieres@gmail.com</a>
+      <a href="mailto:matcavieres@gmail.com" class="link-quiet">matcavieres@gmail.com</a>
       <a
         href="https://www.linkedin.com/in/matias-cavieres/"
         target="_blank"
         rel="noopener"
-        class="nav-link"
+        class="link-quiet"
       >
         LinkedIn
       </a>
       <a
-        href="https://github.com/matcavieres"
+        href="https://github.com/mfcbdev"
         target="_blank"
         rel="noopener"
-        class="nav-link"
+        class="link-quiet"
       >
         GitHub
       </a>

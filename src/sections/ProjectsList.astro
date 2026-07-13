@@ -20,15 +20,17 @@ all.sort((a, b) => a.data.order - b.data.order);
   <SectionHeading title={t('projects.title')} intro={t('projects.intro')} />
   <div>
     {
-      all.map((entry) => (
-        <ProjectCard
-          locale={locale}
-          title={entry.data.title}
-          summary={entry.data.summary}
-          stack={entry.data.stack}
-          github={entry.data.github}
-          liveUrl={entry.data.liveUrl}
-        />
+      all.map((entry, i) => (
+        <div class="reveal" style={`--reveal-delay: ${200 + i * 90}ms`}>
+          <ProjectCard
+            locale={locale}
+            title={entry.data.title}
+            summary={entry.data.summary}
+            stack={entry.data.stack}
+            github={entry.data.github}
+            liveUrl={entry.data.liveUrl}
+          />
+        </div>
       ))
     }
   </div>
