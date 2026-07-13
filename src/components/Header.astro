@@ -1,6 +1,7 @@
 ---
 import { useTranslations, path, alternateUrl } from '../i18n/utils';
 import type { Locale } from '../i18n/ui';
+import ThemeToggle from './ThemeToggle.astro';
 
 interface Props {
   locale: Locale;
@@ -37,10 +38,10 @@ function isActive(href: string): boolean {
       aria-label="Matías Cavieres"
     >
       <svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true">
-        <rect x="1" y="1" width="9" height="9" rx="1.5" fill="#01161e" />
-        <rect x="12" y="1" width="9" height="9" rx="1.5" fill="#124559" />
-        <rect x="1" y="12" width="9" height="9" rx="1.5" fill="#598392" />
-        <rect x="12" y="12" width="9" height="9" rx="1.5" fill="#aec3b0" />
+        <rect x="1" y="1" width="9" height="9" rx="1.5" fill="var(--color-logo-1)" />
+        <rect x="12" y="1" width="9" height="9" rx="1.5" fill="var(--color-logo-2)" />
+        <rect x="1" y="12" width="9" height="9" rx="1.5" fill="var(--color-logo-3)" />
+        <rect x="12" y="12" width="9" height="9" rx="1.5" fill="var(--color-logo-4)" />
       </svg>
       <span class="font-serif font-bold tracking-tight text-[1.05rem]">mc.</span>
     </a>
@@ -63,6 +64,7 @@ function isActive(href: string): boolean {
       >
         {t('lang.toggle')}
       </a>
+      <ThemeToggle locale={locale} />
     </nav>
   </div>
   <nav class="sm:hidden mx-auto max-w-5xl px-6 pb-4 flex items-center gap-5 overflow-x-auto">

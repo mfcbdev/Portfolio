@@ -11,6 +11,10 @@
   --color-on-surface: #eff6e0;
   --color-accent: #124559;
   --color-rule: #aec3b0;
+  --color-logo-1: #01161e;
+  --color-logo-2: #124559;
+  --color-logo-3: #598392;
+  --color-logo-4: #aec3b0;
 
   --font-serif: "Fraunces Variable", ui-serif, Georgia, serif;
   --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
@@ -29,6 +33,30 @@
   --duration-slow: 520ms;
 
   --ring: 0 0 0 3px color-mix(in oklab, var(--color-accent) 35%, transparent);
+}
+
+/* Dark theme override — same 5-color palette, roles flipped. */
+:root[data-theme="dark"] {
+  --color-bg: #01161e;
+  --color-bg-alt: #0b2a36;
+  --color-ink: #eff6e0;
+  --color-muted: #aec3b0;
+  --color-surface: #eff6e0;
+  --color-on-surface: #01161e;
+  --color-accent: #aec3b0;
+  --color-rule: #124559;
+  --color-logo-1: #eff6e0;
+  --color-logo-2: #aec3b0;
+  --color-logo-3: #598392;
+  --color-logo-4: #124559;
+  color-scheme: dark;
+}
+
+/* Smooth cross-fade on theme swap; skipped when reduced motion. */
+:root {
+  transition:
+    background-color var(--duration-med, 320ms) var(--ease-out-quart, ease),
+    color var(--duration-med, 320ms) var(--ease-out-quart, ease);
 }
 
 @layer base {
@@ -205,8 +233,13 @@
 
   .btn:hover {
     background: var(--color-accent);
+    color: var(--color-on-surface);
     transform: translateY(-1px);
     box-shadow: 0 6px 16px -6px rgba(1, 22, 30, 0.25);
+  }
+
+  :root[data-theme="dark"] .btn:hover {
+    color: var(--color-bg);
   }
 
   .btn:active {

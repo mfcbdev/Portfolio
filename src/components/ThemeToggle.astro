@@ -1,0 +1,110 @@
+---
+import { useTranslations } from '../i18n/utils';
+import type { Locale } from '../i18n/ui';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+const labelLight = locale === 'en' ? 'Switch to light mode' : 'Cambiar a modo claro';
+const labelDark = locale === 'en' ? 'Switch to dark mode' : 'Cambiar a modo oscuro';
+---
+
+<button
+  type="button"
+  data-theme-toggle
+  data-label-light={labelLight}
+  data-label-dark={labelDark}
+  aria-label={labelDark}
+  class="theme-toggle inline-flex items-center justify-center rounded-full border border-[var(--color-rule)] p-1.5 text-[var(--color-muted)] transition-colors duration-200 hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] focus-visible:outline-none"
+>
+  <svg
+    data-theme-icon="light"
+    width="16"
+    height="16"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="1.7"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    aria-hidden="true"
+  >
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+  </svg>
+  <svg
+    data-theme-icon="dark"
+    width="16"
+    height="16"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="1.7"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    aria-hidden="true"
+  >
+    <circle cx="12" cy="12" r="4"></circle>
+    <path d="M12 2v2"></path>
+    <path d="M12 20v2"></path>
+    <path d="m4.93 4.93 1.41 1.41"></path>
+    <path d="m17.66 17.66 1.41 1.41"></path>
+    <path d="M2 12h2"></path>
+    <path d="M20 12h2"></path>
+    <path d="m6.34 17.66-1.41 1.41"></path>
+    <path d="m19.07 4.93-1.41 1.41"></path>
+  </svg>
+</button>
+
+<style>
+  :root:not([data-theme='dark']) [data-theme-icon='dark'] {
+    display: none;
+  }
+  :root[data-theme='dark'] [data-theme-icon='light'] {
+    display: none;
+  }
+</style>
+
+<script>
+  function bindThemeToggle() {
+    const btn = document.querySelector<HTMLButtonElement>('[data-theme-toggle]');
+    if (!btn || btn.dataset.themeBound === '1') return;
+    btn.dataset.themeBound = '1';
+
+    const updateLabel = (theme: string) => {
+      const label = theme === 'dark' ? btn.dataset.labelLight : btn.dataset.labelDark;
+      if (label) btn.setAttribute('aria-label', label);
+    };
+
+    updateLabel(document.documentElement.getAttribute('data-theme') || 'light');
+
+    btn.addEventListener('click', () => {
+      const current =
+        document.documentElement.getAttribute('data-theme') ||
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      const next = current === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      try {
+        localStorage.setItem('theme', next);
+      } catch {}
+      updateLabel(next);
+    });
+  }
+
+  bindThemeToggle();
+  document.addEventListener('astro:after-swap', bindThemeToggle);
+
+  // Follow OS changes only when the user hasn't set a manual preference.
+  const media = window.matchMedia('(prefers-color-scheme: dark)');
+  media.addEventListener('change', (e) => {
+    let stored: string | null = null;
+    try {
+      stored = localStorage.getItem('theme');
+    } catch {}
+    if (stored !== 'light' && stored !== 'dark') {
+      document.documentElement.setAttribute('data-theme', e.matches ? 'dark' : 'light');
+    }
+  });
+</script>
